@@ -20,3 +20,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- script: 'curl -LJO https://github.com/whitesource/unified-agent-distribution/releases/latest/download/wss-unified-agent.jar'
+  displayName: 'Download the latest Unified Agent'
+
+- script: 'java -jar wss-unified-agent.jar -c wss-unified-agent.config -apiKey <API_KEY> -project <PROJECT_NAME>'
+  displayName: 'Run Unified Agent Scan'
